@@ -1,7 +1,10 @@
 package io.github.ad417.Notations;
 
+import io.github.ad417.Notations.Format.FormatCallback;
 import io.github.ad417.Notations.Format.Util;
 import io.github.ad417.BreakInfinity.BigDouble;
+
+import java.text.Format;
 
 @SuppressWarnings("unused")
 public abstract class Notation {
@@ -71,10 +74,6 @@ public abstract class Notation {
 
     public abstract String formatDecimal(BigDouble value, int places, int placesExponent);
 
-    protected interface SpecialFormatCallback {
-        String format(double number, int places);
-    }
-
     protected final String formatExponent(long exponent) {
         // TODO: Format.Settings.exponentDefaultPlaces;
         return formatExponent(exponent, 0, (n, p) -> Double.toString(n), 2);
@@ -86,7 +85,7 @@ public abstract class Notation {
 
     protected final String formatExponent(
             long exponent, int precision,
-            SpecialFormatCallback specialFormat
+            FormatCallback specialFormat
     ) {
         return formatExponent(exponent, precision, specialFormat, Math.max(precision, 2));
     }
@@ -94,7 +93,7 @@ public abstract class Notation {
     protected final String formatExponent(
             long exponent,
             int precision,
-            SpecialFormatCallback specialFormat,
+            FormatCallback specialFormat,
             int largeExponentPrecision
     ) {
         if (Util.noSpecialFormatting(exponent)) {
