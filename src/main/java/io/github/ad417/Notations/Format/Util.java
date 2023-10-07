@@ -48,11 +48,11 @@ public class Util {
 
     // TODO: toEngineering, toLongScale. toFixedEngineering, toFixedLongScale.
 
-    public static boolean noSpecialFormatting(long exponent) {
+    public static boolean noSpecialFormatting(double exponent) {
         return exponent < Settings.lowerValueForExponentCommas;
     }
 
-    public static boolean showCommas(long exponent) {
+    public static boolean showCommas(double exponent) {
         return Settings.showExponentCommas && exponent < Settings.higherValueForExponentCommas;
     }
 

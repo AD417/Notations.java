@@ -18,12 +18,4 @@ public class ScientificNotation extends Notation{
                 (x, __) -> Util.formatMantissaBaseTen(x, 0)
         ).format(value, places, placesExponent);
     }
-
-
-    public static void main(String[] args) {
-        Settings.showExponentCommas = false;
-        Notation scientific = new ScientificNotation();
-        BigDouble bigSNum = new BigDouble("3.5826347327e289372384");
-        System.out.println(scientific.format(bigSNum, 0));
-    }
 }
