@@ -1,6 +1,7 @@
 package io.github.ad417.Notations;
 
 import io.github.ad417.Notations.Format.FormatCallback;
+import io.github.ad417.Notations.Format.FormatLongCallback;
 import io.github.ad417.Notations.Format.Util;
 import io.github.ad417.BreakInfinity.BigDouble;
 
@@ -76,16 +77,16 @@ public abstract class Notation {
 
     protected final String formatExponent(long exponent) {
         // TODO: Format.Settings.exponentDefaultPlaces;
-        return formatExponent(exponent, 0, (n, p) -> Double.toString(n), 2);
+        return formatExponent(exponent, 0, (n, p) -> Long.toString(n), 2);
     }
 
     protected final String formatExponent(long exponent, int precision) {
-        return formatExponent(exponent, precision, (n, p) -> Double.toString(n), Math.max(precision, 2));
+        return formatExponent(exponent, precision, (n, p) -> Long.toString(n), Math.max(precision, 2));
     }
 
     protected final String formatExponent(
             long exponent, int precision,
-            FormatCallback specialFormat
+            FormatLongCallback specialFormat
     ) {
         return formatExponent(exponent, precision, specialFormat, Math.max(precision, 2));
     }
@@ -93,7 +94,7 @@ public abstract class Notation {
     protected final String formatExponent(
             long exponent,
             int precision,
-            FormatCallback specialFormat,
+            FormatLongCallback specialFormat,
             int largeExponentPrecision
     ) {
         if (Util.noSpecialFormatting(exponent)) {
