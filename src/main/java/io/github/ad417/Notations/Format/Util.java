@@ -1,6 +1,8 @@
 package io.github.ad417.Notations.Format;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import io.github.ad417.BreakInfinity.BigDouble;
 import org.jetbrains.annotations.Nullable;
@@ -47,6 +49,65 @@ public class Util {
     }
 
     // TODO: toEngineering, toLongScale. toFixedEngineering, toFixedLongScale.
+
+    private static final String[] STANDARD_ABBREVIATIONS = new String[] {
+            "K", "M", "B", "T", "Qa", "Qt", "Sx", "Sp", "Oc", "No"
+    };
+
+    private static final String[][] STANDARD_PREFIXES = new String[][] {
+            {"", "U", "D", "T", "Qa", "Qt", "Sx", "Sp", "O", "N"},
+            {"", "Dc", "Vg", "Tg", "Qd", "Qi", "Se", "St", "Og", "Nn"},
+            {"", "Ce", "Dn", "Tc", "Qe", "Qu", "Sc", "Si", "Oe", "Ne"}
+    };
+
+    private static final String[] STANDARD_PREFIXES_2 = {
+            "", "MI-", "MC-", "NA-", "PC-", "FM-", "AT-", "ZP-"
+    };
+
+    // This is still considered high complexity, but it's a lot simpler than
+    // the mess that was here before.
+    public static String abbreviateStandard(long rawExp) {
+        long exp = rawExp - 1;
+        // Special case: exp is 0.
+        if (exp == -1) return "";
+
+        // Special case: values below Dc have special 2-letter versions.
+        if (exp < STANDARD_ABBREVIATIONS.length) return STANDARD_ABBREVIATIONS[(int)exp];
+
+        // For each order of magnitude, get the relevant prefix from the nested list.
+        ArrayList<String> prefix = new ArrayList<>();
+        for (long e = exp; e > 0; e /= 10) {
+            prefix.add(STANDARD_PREFIXES[prefix.size() % 3][(int)(e % 10)]);
+        }
+        // Edge case: if exp % 10 == 0, pad the list.
+        while (prefix.size() % 3 != 0) prefix.add("");
+
+        StringBuilder abbreviation = new StringBuilder();
+        for (int i = prefix.size() / 3 - 1; i >= 0; i--) {
+            abbreviation.append(String.join("", prefix.subList(i * 3, i * 3 + 3)));
+            abbreviation.append(STANDARD_PREFIXES_2[i]);
+        }
+
+        // Do a bunch of regex-ing on all of the values.
+        String out;
+        Pattern p1 = Pattern.compile("/-[A-Z]{2}-/g");
+        Pattern p2 = Pattern.compile("/U([A-Z]{2}-)/g");
+        Pattern p3 = Pattern.compile("/-$/");
+
+        out = p1.matcher(abbreviation).replaceAll("-");
+        out = p2.matcher(out).replaceAll("$1");
+        out = p3.matcher(out).replaceAll("");
+
+        return out;
+    }
+    /*export function abbreviateStandard(rawExp: number): string {
+        let abbreviation = "";
+        for (let i = prefix.length / 3 - 1; i >= 0; i--) {
+            abbreviation += prefix.slice(i * 3, i * 3 + 3).join("") + STANDARD_PREFIXES_2[i];
+        }
+        return abbreviation.replace(/-[A-Z]{2}-/g, "-").replace(/U([A-Z]{2}-)/g, "$1").replace(/-$/, "");
+    }*/
+
 
     public static boolean noSpecialFormatting(double exponent) {
         return exponent < Settings.lowerValueForExponentCommas;
