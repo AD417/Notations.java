@@ -10,7 +10,7 @@ import java.text.Format;
 public abstract class Notation {
     protected static final String INFINITE = "Infinite";
     protected static final String NEGATIVE_INFINITE = "-Infinite";
-    protected static String name;
+    public static String name;
 
     public final String format(BigDouble value) {
         return format(value, 0, 0, 0);

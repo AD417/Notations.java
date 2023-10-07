@@ -6,7 +6,7 @@ import io.github.ad417.Notations.Format.Settings;
 import io.github.ad417.Notations.Format.Util;
 
 public class ScientificNotation extends Notation{
-    protected static String name = "Scientific";
+    public static String name = "Scientific";
 
     @Override
     public String formatDecimal(BigDouble value, int places, int placesExponent) {

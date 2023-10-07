@@ -18,6 +18,11 @@ public class ScientificTest {
     }
 
     @Test
+    public void testNotationName() {
+        assertEquals("Scientific", ScientificNotation.name);
+    }
+
+    @Test
     public void testZeroConversion() {
         assertEquals("0", notation.format(BigDouble.ZERO, 0, 0));
         assertEquals("0.0", notation.format(BigDouble.ZERO, 1, 1));

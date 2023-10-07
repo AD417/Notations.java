@@ -1,14 +1,14 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import io.github.ad417.BreakInfinity.BigDouble;
+import io.github.ad417.Notations.EngineeringNotation;
 import io.github.ad417.Notations.Format.Settings;
-import io.github.ad417.Notations.LogarithmNotation;
 import io.github.ad417.Notations.Notation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class LogarithmTest {
-    public static Notation notation = new LogarithmNotation();
+public class EngineeringTest {
+    public static Notation notation = new EngineeringNotation();
 
     @BeforeEach
     public void setDefaultSettings() {
@@ -19,7 +19,7 @@ public class LogarithmTest {
 
     @Test
     public void testNotationName() {
-        assertEquals("Logarithm", LogarithmNotation.name);
+        assertEquals("Engineering", EngineeringNotation.name);
     }
 
     @Test
@@ -69,9 +69,9 @@ public class LogarithmTest {
     @Test
     public void test1000() {
         BigDouble thousand = new BigDouble(1000);
-        assertEquals("e3.0", notation.format(thousand, 0, 0, 0));
-        assertEquals("e3.00", notation.format(thousand, 2, 0, 0));
-        assertEquals("e3.00", notation.format(thousand.add(6), 2, 0, 0));
+        assertEquals("1e3", notation.format(thousand, 0, 0, 0));
+        assertEquals("1.00e3", notation.format(thousand, 2, 0, 0));
+        assertEquals("1.01e3", notation.format(thousand.add(6), 2, 0, 0));
     }
 
     @Test
@@ -89,21 +89,21 @@ public class LogarithmTest {
     @Test
     public void testLargeWithCommas() {
         BigDouble randomBigNum = new BigDouble("3.5826347327e289372384");
-        assertEquals("e289,372,385", notation.format(randomBigNum, 0));
-        assertEquals("e289,372,385", notation.format(randomBigNum, 1));
-        assertEquals("e289,372,385", notation.format(randomBigNum, 2));
-        assertEquals("e289,372,385", notation.format(randomBigNum, 3));
+        assertEquals("36e289,372,383", notation.format(randomBigNum, 0));
+        assertEquals("35.8e289,372,383", notation.format(randomBigNum, 1));
+        assertEquals("35.83e289,372,383", notation.format(randomBigNum, 2));
+        assertEquals("35.826e289,372,383", notation.format(randomBigNum, 3));
     }
 
     @Test
     public void testLargeWithoutCommas() {
         Settings.showExponentCommas = false;
         BigDouble randomBigNum = new BigDouble("3.5826347327e289372384");
-        assertEquals("ee8.5", notation.format(randomBigNum, 0));
-        assertEquals("ee8.5", notation.format(randomBigNum, 1));
-        assertEquals("ee8.46", notation.format(randomBigNum, 2));
-        assertEquals("ee8.461", notation.format(randomBigNum, 3));
-        assertEquals("ee8.4615", notation.format(randomBigNum, 4));
+        assertEquals("36e289.37e6", notation.format(randomBigNum, 0));
+        assertEquals("36e289.37e6", notation.format(randomBigNum, 1));
+        assertEquals("36e289.37e6", notation.format(randomBigNum, 2));
+        assertEquals("36e289.372e6", notation.format(randomBigNum, 3));
+        assertEquals("36e289.3724e6", notation.format(randomBigNum, 4));
     }
 
     @Test
