@@ -48,6 +48,23 @@ public class Util {
         return value;
     }
 
+    public static MantissaExponent toEngineering(BigDouble value) {
+        long exponentOffset = value.getExponent() % 3;
+        return new MantissaExponent(
+                value.getMantissa() * Math.pow(10, exponentOffset),
+                value.getExponent() - exponentOffset
+        );
+    }
+
+    public static MantissaExponent toLongScale(BigDouble value) {
+        int mod = value.getExponent() < 6 ? 3 : 6;
+        long exponentOffset = value.getExponent() % mod;
+        return new MantissaExponent(
+                value.getMantissa() * Math.pow(10, exponentOffset),
+                value.getExponent() - exponentOffset
+        );
+    }
+
     // TODO: toEngineering, toLongScale. toFixedEngineering, toFixedLongScale.
 
     private static final String[] STANDARD_ABBREVIATIONS = new String[] {
