@@ -83,10 +83,4 @@ public class HexNotation extends Notation {
         BigDouble fractionToNextPowerOfTwo = x.div(previousPowerOfTwo).sub(1);
         return floorOfLog.add(fractionToNextPowerOfTwo);
     }
-
-    public static void main(String[] args) {
-        BigDouble x = new BigDouble("1e-1000");
-        System.out.println(x);
-        System.out.println(new HexNotation().format(x));
-    }
 }

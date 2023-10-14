@@ -44,8 +44,4 @@ public class DotsNotation extends Notation {
         }
         return this.dotify(Math.floor(value / 64516)) + this.dotify(value % 64516, true);
     }
-
-    public static void main(String[] args) {
-        System.out.println(new DotsNotation().format(new BigDouble(0.4)));
-    }
 }
