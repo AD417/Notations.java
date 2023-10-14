@@ -3,14 +3,14 @@ plugins {
 }
 
 group = "io.github.ad417"
-version = "1.0-SNAPSHOT"
+version = "0.1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("io.github.ad417:BreakInfinity:0.1.0")
+    implementation("io.github.ad417:BreakInfinity:0.2.0")
     implementation("org.jetbrains:annotations:24.0.0")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
