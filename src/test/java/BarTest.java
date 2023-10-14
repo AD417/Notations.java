@@ -7,6 +7,7 @@ import io.github.ad417.Notations.Notation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+// Thanks, I hate this one. 
 public class BarTest {
     public static Notation notation = new BarNotation();
 

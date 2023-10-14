@@ -10,12 +10,8 @@ public class BarNotation extends Notation {
     // The reason these have to be these non-bar characters and not the actual bars
     // is beyond me. However, you can trust that these will render correctly, as they
     // are part of the MonospaceTypewriter.ttf font.
-    private static final String[] BARS = new String[] {
-            "", "", "", "", "", "", "", ""
-    };
-    private static final String[] NEGATIVE_BARS = new String[] {
-            "", "", "", "", "", "", "", ""
-    };
+    private static final String BARS = "";
+    private static final String NEGATIVE_BARS = "";
     // Speeds up log math, I guess?
     private static final double LOG8FACTOR = Math.log(10) / Math.log(8);
 
@@ -80,25 +76,26 @@ public class BarNotation extends Notation {
         int decimalLog64 = (int) (decimalLog * 64);
 
         StringBuilder sb = new StringBuilder();
-        sb.append(BARS[decimalLog64 % 8]);
-        sb.append(BARS[decimalLog64 / 8]);
+        sb.append(BARS.charAt(decimalLog64 % 8));
+        sb.append(BARS.charAt(decimalLog64 / 8));
 
         int remainder;
         while (wholeLog >= 8) {
             remainder = (int) (wholeLog % 8);
-            sb.append(BARS[remainder]);
+            sb.append(BARS.charAt(remainder));
             wholeLog /= 8;
         }
-        sb.append(BARS[(int)wholeLog]);
+        sb.append(BARS.charAt((int)wholeLog));
 
         return sb.toString();
     }
 
     private String flipBars(String positiveBars) {
         StringBuilder sb = new StringBuilder();
-        String[] chars = positiveBars.split("");
-        for (String s : chars) {
+        char[] chars = positiveBars.toCharArray();
+        for (char c : chars) {
+            sb.append(NEGATIVE_BARS.charAt(BARS.indexOf(c)));
         }
-        return "STUB";
+        return sb.toString();
     }
 }
