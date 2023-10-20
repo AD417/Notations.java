@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class ImperialNotation extends Notation {
-    protected static final String name ="Imperial";
+    public static final String name ="Imperial";
     // FML
     private static class VolumeUnit {
         /** The volume, measured in pL. */
@@ -313,7 +313,7 @@ public class ImperialNotation extends Notation {
     private String formatMetric(double volume) {
         if (volume < 1000) {
             int places = volume < 10 || volume == Math.round(volume) ? 2 : 0;
-            return DoubleFormat.toFixed(volume, places);
+            return DoubleFormat.toFixed(volume, places) + "pL";
         }
         if (volume < 1e6) {
             return DoubleFormat.toPrecision(volume / 1000, 4) + "nL";
@@ -346,5 +346,7 @@ public class ImperialNotation extends Notation {
         System.out.println(n.format(new BigDouble("1e" + (92233720368547758L))));
         n = new ScientificNotation();
         System.out.println(n.format(new BigDouble("1e" + (92233720368547758L))));
+
+        System.out.println(ImperialNotation.REDUCE_RATIO);
     }
 }
