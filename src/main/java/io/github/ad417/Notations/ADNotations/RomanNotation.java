@@ -3,6 +3,10 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * Roman Notation - formats values as Roman numerals. Large values are shown in
+ * a quasi-scientific notation.
+ */
 public class RomanNotation extends Notation {
     public static final String name = "Roman";
     protected static final String INFINITE = "Infinitus";

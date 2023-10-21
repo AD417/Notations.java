@@ -3,6 +3,9 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * Dots Notation - Uses Braille unicode characters to represent values.
+ */
 public class DotsNotation extends Notation {
     public static final String name = "Dots";
 

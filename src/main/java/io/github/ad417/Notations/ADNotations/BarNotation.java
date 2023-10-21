@@ -3,6 +3,10 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * Bar Notation - represents large numbers as a series of bars that fill up
+ * to visually represent a value.
+ */
 public class BarNotation extends Notation {
     public static final String name = "Bar";
     protected static final String NEGATIVE_INFINITE = "";

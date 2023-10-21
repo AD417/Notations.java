@@ -8,6 +8,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * Imperial Notation - a very impractical notation that converts the formatted
+ * value into imperial units, wrapping around on itself if the units get too
+ * big.
+ */
 public class ImperialNotation extends Notation {
     public static final String name ="Imperial";
     // FML

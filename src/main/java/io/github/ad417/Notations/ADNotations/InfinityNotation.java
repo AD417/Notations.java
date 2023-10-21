@@ -5,6 +5,10 @@ import io.github.ad417.Notations.core.Notation;
 import io.github.ad417.Notations.core.Settings;
 import io.github.ad417.Notations.core.Util;
 
+/**
+ * Infinity Notation - Effectively logarithm notation
+ * base 1e308 (Double Infinity).
+ */
 public class InfinityNotation extends Notation {
     public static final String name = "Infinity";
 

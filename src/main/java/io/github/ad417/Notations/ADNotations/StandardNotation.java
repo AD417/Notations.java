@@ -4,6 +4,10 @@ import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 import io.github.ad417.Notations.core.Util;
 
+/**
+ * Standard Notation: the notation system you were probably taught in
+ * middle school, taken to unreasonable extremes with large numbers.
+ */
 public class StandardNotation extends Notation {
     public static String name = "Standard";
 

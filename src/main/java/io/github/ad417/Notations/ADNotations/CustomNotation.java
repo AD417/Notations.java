@@ -7,6 +7,10 @@ import io.github.ad417.Notations.core.Util;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Custom Notation - Allows for arbitrary symbols to be used in place of
+ * numbers to create notations consisting of any combination of values.
+ */
 @SuppressWarnings("unused")
 public class CustomNotation extends EngineeringNotation {
     public static final String name = "Custom";

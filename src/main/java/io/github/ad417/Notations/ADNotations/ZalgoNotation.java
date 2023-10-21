@@ -5,6 +5,13 @@ import io.github.ad417.Notations.core.DoubleFormat;
 import io.github.ad417.Notations.core.Notation;
 import io.github.ad417.Notations.core.Util;
 
+/**
+ * Zalgo Notation - A notation that formats large values as relatively
+ * small numbers corrupted using various "Zalgo Characters" that obscure the
+ * representation.
+ * <br />
+ * H҉E҉ ̷C͓O̶M͚E̚S͚
+ */
 public class ZalgoNotation extends Notation {
     public static final String name = "Zalgo";
 

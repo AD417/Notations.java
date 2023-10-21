@@ -5,6 +5,11 @@ import io.github.ad417.Notations.core.Notation;
 
 import java.util.ArrayList;
 
+/**
+ * Prime Notation - formats large numbers into approximate prime
+ * factorizations. Large enough values are shown as factorizations
+ * raised to the power of other factorizations, recursively.
+ */
 public class PrimeNotation extends Notation {
     public static final String name = "Prime";
     protected static final String INFINITE = "Primefinity?";

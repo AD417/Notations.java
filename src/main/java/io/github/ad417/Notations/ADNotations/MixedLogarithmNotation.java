@@ -2,7 +2,10 @@ package io.github.ad417.Notations.ADNotations;
 
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
-
+/**
+ * Mixed Engineering Notation - Uses {@link StandardNotation} below 1e33,
+ * and {@link LogarithmNotation} above it.
+ */
 public class MixedLogarithmNotation extends Notation {
     public static final String name = "Mixed Logarithm";
 

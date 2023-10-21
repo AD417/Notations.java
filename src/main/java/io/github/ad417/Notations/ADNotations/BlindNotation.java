@@ -3,7 +3,9 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
-// Lol
+/**
+ * Blind notation: makes you blind, you can't see the number. Lol
+ */
 public class BlindNotation extends Notation {
     public static final String name = "Blind";
     protected static final String NEGATIVE_INFINITE = " ";

@@ -3,6 +3,10 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * Brackets Notation - uses the 6 brackets ([{}]) to represent values.
+ * Effectively logarithm notation base 6 with the brackets as digits.
+ */
 public class BracketsNotation extends Notation {
     public static final String name = "Brackets";
 

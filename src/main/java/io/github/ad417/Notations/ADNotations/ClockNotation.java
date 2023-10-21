@@ -3,6 +3,10 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * Clock Notation - Uses unicode clocks to represent large values. Of note is
+ * that all BigDouble-sized values can be represented using at most 4 clocks.
+ */
 public class ClockNotation extends Notation {
     public static final String name = "Clock";
     protected static final String INFINITE = "🕛🕡";

@@ -4,6 +4,11 @@ import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 import io.github.ad417.Notations.core.Util;
 
+/**
+ * Scientific Notation - the simplest notation, formatting a value as
+ * MMMeXXX, where M is the mantissa (between 1 and 10) and X is the
+ * exponent (some integer). The value is therefore MMM * 10<sup>XXX</sup>.
+ */
 public class ScientificNotation extends Notation {
     public static String name = "Scientific";
 

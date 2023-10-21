@@ -4,6 +4,11 @@ import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 import io.github.ad417.Notations.core.Util;
 
+/**
+ * Engineering Notation - Similar to Scientific Notation in seperation of
+ * Mantissa and exponent, but goes in blocks of 3s to align with metric
+ * prefixes.
+ */
 public class EngineeringNotation extends Notation {
     public static String name = "Engineering";
 

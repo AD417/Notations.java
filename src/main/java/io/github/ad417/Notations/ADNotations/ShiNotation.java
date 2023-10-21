@@ -3,6 +3,10 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * Shi Notation - formats all values as three Chinese characters, all of which
+ * are pronounced "Shi".
+ */
 public class ShiNotation extends Notation {
     public static final String name = "Shi";
 

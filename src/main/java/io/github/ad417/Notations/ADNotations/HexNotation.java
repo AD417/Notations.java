@@ -3,6 +3,10 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * Consult  <a href="https://dan-simon.github.io/misc/what-the-hex/">Dan Simon's page</a>
+ * for an appropriate summary of this notation.
+ */
 public class HexNotation extends Notation {
     public static final String name = "Hex";
 
