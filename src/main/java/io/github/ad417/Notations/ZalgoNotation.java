@@ -1,6 +1,7 @@
 package io.github.ad417.Notations;
 
 import io.github.ad417.BreakInfinity.BigDouble;
+import io.github.ad417.Notations.Format.DoubleFormat;
 import io.github.ad417.Notations.Format.Util;
 
 public class ZalgoNotation extends Notation {
@@ -15,7 +16,6 @@ public class ZalgoNotation extends Notation {
         StringBuilder sb = new StringBuilder();
         for (String s : heComes) {
             sb.append(s);
-            // TODO: What dereference?
             // Also just adds to the spookiness of this code.
             for (String z : ZalgoNotation.ZALGO_CHARS) sb.append(z);
         }
@@ -37,19 +37,32 @@ public class ZalgoNotation extends Notation {
     }
 
     private String heComes(BigDouble value) {
-        double scaled = value.add(1).log10() / 66.666;
-        double displayPart = Math.round(scaled * 100.0) / 100.0;
-        // 1073741824 = 2 ^ 30
-        int zalgoPart = (int) Math.abs(1073741824 * scaled - displayPart);
+        double scaled = value.add(1).log10() / 66666 * 1000;
 
+        // Absolute String bullshit is what's going on here.
+
+        // In the original code, we convert scaled to a fixed value with 2dp, and then convert
+        // it immediately back into a Number. how useless. The display part needs to be a
+        // String anyways because it gets formatted with Commas.
+        // We prune trailing zeroes because that's what should happen in the final representation.
+        String displayPart = DoubleFormat.toFixed(scaled, 2).replaceAll("\\.?0*$", "");
+
+        // The Zalgo part is fairly straightforward, compared to the original code.
+        int zalgoPart = (int) (Math.abs(Math.pow(2, 30) * (scaled - Double.parseDouble(displayPart))));
+
+        // TODO: make formatWithCommas use a more JS-compliant toString method.
+        //  I think it converts the int part, if possible, and then adds on
+        //  the decimal part if possible afterwards.
+
+        // "displayPart" is kept as a String so this bit is less painless.
         String[] displayChars = Util.formatWithCommas(displayPart).split("");
-        String[] zalgoIndices = String.format("%s%.0f", zalgoPart, scaled).split("");
+        String[] zalgoIndices = (zalgoPart + DoubleFormat.toFixed(scaled, 0)).split("");
 
         int zalgoIndex;
         int displayIndex;
         for (int i = 0; i < zalgoIndices.length; i++) {
             zalgoIndex = Integer.parseInt(zalgoIndices[i]);
-            displayIndex = 37 * i % displayChars.length;
+            displayIndex = (37 * i) % displayChars.length;
             displayChars[displayIndex] += ZALGO_CHARS[zalgoIndex];
         }
 
@@ -58,5 +71,11 @@ public class ZalgoNotation extends Notation {
             sb.append(s);
         }
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        ZalgoNotation n = new ZalgoNotation();
+        System.out.println(DoubleFormat.toFixed(10344048.945489455, 2));
+        System.out.println(n.heComes(new BigDouble("1e689596367")));
     }
 }
