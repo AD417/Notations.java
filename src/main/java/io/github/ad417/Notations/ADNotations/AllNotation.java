@@ -3,6 +3,10 @@ package io.github.ad417.Notations.ADNotations;
 import io.github.ad417.BreakInfinity.BigDouble;
 import io.github.ad417.Notations.core.Notation;
 
+/**
+ * ALL Notation - A combination of every other notation in the standard library
+ * of AD Notations.
+ */
 public class AllNotation extends Notation {
     public static final String name = "ALL";
 

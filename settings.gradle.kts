@@ -1,2 +1,2 @@
-rootProject.name = "ADNotations"
+rootProject.name = "BreakNotations"
 
