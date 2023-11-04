@@ -25,6 +25,13 @@ public class ZalgoTest {
     }
 
     @Test
+    public void testInfinity() {
+        // So uh... this is painful to do with random generator shenanigans. 
+        assertEquals("H_E_ _C_O_M_E_S_", notation.format(BigDouble.POSITIVE_INFINITY).replaceAll("[^\\w ]", "_"));
+        assertEquals("-H_E_ _C_O_M_E_S_", notation.format(BigDouble.NEGATIVE_INFINITY).replaceAll("[^\\w -]", "_"));
+    }
+
+    @Test
     public void testZeroConversion() {
         assertEquals("0̍̍", notation.format(BigDouble.ZERO, 0, 0));
         assertEquals("0̍̍", notation.format(BigDouble.ZERO, 1, 1));

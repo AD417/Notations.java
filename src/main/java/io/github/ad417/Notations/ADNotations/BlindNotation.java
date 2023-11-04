@@ -8,8 +8,16 @@ import io.github.ad417.Notations.core.Notation;
  */
 public class BlindNotation extends Notation {
     public static final String name = "Blind";
-    protected static final String NEGATIVE_INFINITE = " ";
-    protected static final String INFINITE = " ";
+
+    @Override
+    protected String getInfinity() {
+        return " ";
+    }
+
+    @Override
+    protected String getNegativeInfinity() {
+        return " ";
+    }
 
     @Override
     public String formatNegativeDecimal(BigDouble value, int places, int placesExponent) {

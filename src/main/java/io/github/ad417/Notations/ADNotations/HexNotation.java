@@ -10,8 +10,15 @@ import io.github.ad417.Notations.core.Notation;
 public class HexNotation extends Notation {
     public static final String name = "Hex";
 
-    protected static final String INFINITE = "FFFFFFFF";
-    protected static final String NEGATIVE_INFINITE = "00000000";
+    @Override
+    protected String getInfinity() {
+        return "FFFFFFFF";
+    }
+
+    @Override
+    protected String getNegativeInfinity() {
+        return "00000000";
+    }
 
     @Override
     public String formatVerySmallNegativeDecimal(BigDouble value, int places) {

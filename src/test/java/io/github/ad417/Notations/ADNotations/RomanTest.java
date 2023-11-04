@@ -24,6 +24,12 @@ public class RomanTest {
     }
 
     @Test
+    public void testInfinity() {
+        assertEquals("Infinitus", notation.format(BigDouble.POSITIVE_INFINITY));
+        assertEquals("-Infinitus", notation.format(BigDouble.NEGATIVE_INFINITY));
+    }
+
+    @Test
     public void testZeroConversion() {
         assertEquals("nulla", notation.format(BigDouble.ZERO, 0, 0));
         assertEquals("nulla", notation.format(BigDouble.ZERO, 1, 1));

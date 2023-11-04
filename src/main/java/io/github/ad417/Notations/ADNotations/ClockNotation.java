@@ -9,8 +9,11 @@ import io.github.ad417.Notations.core.Notation;
  */
 public class ClockNotation extends Notation {
     public static final String name = "Clock";
-    protected static final String INFINITE = "🕛🕡";
-    protected static final String NEGATIVE_INFINITE = "-🕛🕡";
+
+    @Override
+    protected String getInfinity() {
+        return "🕛🕡";
+    }
 
     private static final String[] HOURS = new String[] {
             "🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"

@@ -9,8 +9,11 @@ import io.github.ad417.Notations.core.Notation;
  */
 public class RomanNotation extends Notation {
     public static final String name = "Roman";
-    protected static final String INFINITE = "Infinitus";
-    protected static final String NEGATIVE_INFINITE = "-Infinitus";
+
+    @Override
+    protected String getInfinity() {
+        return "Infinitus";
+    }
 
     private static final int[] ROMAN_VALUES = new int[] {
             1000000, 900000, 500000, 400000, 100000,

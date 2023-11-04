@@ -12,8 +12,11 @@ import java.util.ArrayList;
  */
 public class PrimeNotation extends Notation {
     public static final String name = "Prime";
-    protected static final String INFINITE = "Primefinity?";
-    protected static final String NEGATIVE_INFINITE = "-Primefinity?";
+
+    @Override
+    protected String getInfinity() {
+        return "Primefinity?";
+    }
 
     // Max int we can reliably get primes for.
     private static final int MAX_INT = 10006;

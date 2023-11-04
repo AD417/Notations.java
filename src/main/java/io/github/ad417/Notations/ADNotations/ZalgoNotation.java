@@ -5,6 +5,8 @@ import io.github.ad417.Notations.core.DoubleFormat;
 import io.github.ad417.Notations.core.Notation;
 import io.github.ad417.Notations.core.Util;
 
+import java.util.Random;
+
 /**
  * Zalgo Notation - A notation that formats large values as relatively
  * small numbers corrupted using various "Zalgo Characters" that obscure the
@@ -19,20 +21,19 @@ public class ZalgoNotation extends Notation {
             "\u030D", "\u0336", "\u0353", "\u033F", "\u0489",
             "\u0330", "\u031A", "\u0338", "\u035A", "\u0337"
     };
-    private static String makeInfinity() {
+    private static final Random Generator = new Random();
+
+    @Override
+    protected String getInfinity() {
         String[] heComes = "HE COMES".split("");
         StringBuilder sb = new StringBuilder();
         for (String s : heComes) {
             sb.append(s);
             // Also just adds to the spookiness of this code.
-            for (String z : ZalgoNotation.ZALGO_CHARS) sb.append(z);
+            sb.append(ZALGO_CHARS[Generator.nextInt(ZALGO_CHARS.length)]);
         }
         return sb.toString();
     }
-
-
-    protected static final String INFINITE = makeInfinity();
-    protected static final String NEGATIVE_INFINITE = "-" + INFINITE;
 
     @Override
     public String formatUnder1000(double value, int places) {

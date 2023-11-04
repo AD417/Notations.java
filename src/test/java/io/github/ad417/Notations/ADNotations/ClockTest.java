@@ -24,6 +24,12 @@ public class ClockTest {
     }
 
     @Test
+    public void testInfinity() {
+        assertEquals( "🕛🕡", notation.format(BigDouble.POSITIVE_INFINITY));
+        assertEquals("-🕛🕡", notation.format(BigDouble.NEGATIVE_INFINITY));
+    }
+
+    @Test
     public void testZeroConversion() {
         assertEquals("\uD83D\uDD5B", notation.format(BigDouble.ZERO, 0, 0));
         assertEquals("\uD83D\uDD5B", notation.format(BigDouble.ZERO, 1, 1));

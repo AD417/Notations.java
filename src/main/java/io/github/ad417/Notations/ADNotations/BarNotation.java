@@ -9,12 +9,21 @@ import io.github.ad417.Notations.core.Notation;
  */
 public class BarNotation extends Notation {
     public static final String name = "Bar";
-    protected static final String NEGATIVE_INFINITE = "";
-    protected static final String INFINITE = "";
 
-    // The reason these have to be these non-bar characters and not the actual bars
-    // is beyond me. However, you can trust that these will render correctly, as they
-    // are part of the MonospaceTypewriter.ttf font.
+    @Override
+    protected String getInfinity() {
+        // The reason these have to be these non-bar characters and not the actual bars
+        // is beyond me. However, you can trust that these will render correctly, as they
+        // are part of the MonospaceTypewriter.ttf font.
+        return "";
+    }
+
+    @Override
+    protected String getNegativeInfinity() {
+        return "";
+    }
+
+
     private static final String BARS = "";
     private static final String NEGATIVE_BARS = "";
     // Speeds up log math, I guess?

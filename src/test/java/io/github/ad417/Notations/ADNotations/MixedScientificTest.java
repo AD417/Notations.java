@@ -24,6 +24,12 @@ public class MixedScientificTest {
     }
 
     @Test
+    public void testInfinity() {
+        assertEquals("Infinite", notation.format(BigDouble.POSITIVE_INFINITY));
+        assertEquals("-Infinite", notation.format(BigDouble.NEGATIVE_INFINITY));
+    }
+
+    @Test
     public void testZeroConversion() {
         assertEquals("0", notation.format(BigDouble.ZERO, 0, 0));
         assertEquals("0.0", notation.format(BigDouble.ZERO, 1, 1));

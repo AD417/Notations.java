@@ -24,6 +24,12 @@ public class HexTest {
     }
 
     @Test
+    public void testInfinity() {
+        assertEquals("FFFFFFFF", notation.format(BigDouble.POSITIVE_INFINITY));
+        assertEquals("00000000", notation.format(BigDouble.NEGATIVE_INFINITY));
+    }
+
+    @Test
     public void testZeroConversion() {
         assertEquals("80000000", notation.format(BigDouble.ZERO, 0, 0));
         assertEquals("80000000", notation.format(BigDouble.ZERO, 1, 1));

@@ -13,12 +13,16 @@ public abstract class Notation {
      * Representation of Infinity in this notation -- any number deemed
      * too large to represent.
      */
-    protected static final String INFINITE = "Infinite";
+    protected String getInfinity() {
+        return "Infinite";
+    }
     /**
      * Representation of Negative Infinity in this notation -- any number
      * deemed too large in magnitude to represent, but negative.
      */
-    protected static final String NEGATIVE_INFINITE = "-Infinite";
+    protected String getNegativeInfinity() {
+        return "-" + getInfinity();
+    }
     /** The name of this notation */
     public static String name;
 
@@ -79,7 +83,7 @@ public abstract class Notation {
      */
     public final String format(BigDouble value, int places, int placesUnder1000, int placesExponent) {
         if (BigDouble.isInfinite(value)) {
-            return value.sign() < 0 ? NEGATIVE_INFINITE : INFINITE;
+            return value.sign() < 0 ? getNegativeInfinity() : getInfinity();
         }
 
         if (value.getExponent() < -300) {

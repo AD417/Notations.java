@@ -24,6 +24,12 @@ public class PrimeTest {
     }
 
     @Test
+    public void testInfinity() {
+        assertEquals("Primefinity?", notation.format(BigDouble.POSITIVE_INFINITY));
+        assertEquals("-Primefinity?", notation.format(BigDouble.NEGATIVE_INFINITY));
+    }
+
+    @Test
     public void testZeroConversion() {
         assertEquals("0", notation.format(BigDouble.ZERO, 0, 0));
         assertEquals("0", notation.format(BigDouble.ZERO, 1, 1));

@@ -16,7 +16,10 @@ public class DotsNotation extends Notation {
             "⣀⣁⣂⣃⣄⣅⣆⣇⣈⣉⣊⣋⣌⣍⣎⣏⣐⣑⣒⣓⣔⣕⣖⣗⣘⣙⣚⣛⣜⣝⣞⣟⣠⣡⣢⣣⣤⣥⣦⣧⣨⣩⣪⣫⣬⣭⣮⣯⣰⣱⣲⣳⣴⣵⣶⣷⣸⣹⣺⣻⣼⣽⣾⣿"
     ).split("");
 
-    protected static final String INFINITE = "⣿⠀⣿";
+    @Override
+    protected String getInfinity() {
+        return "⣿⠀⣿";
+    }
 
     @Override
     public String formatUnder1000(double value, int places) {

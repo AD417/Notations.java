@@ -25,6 +25,13 @@ public class BarTest {
     }
 
     @Test
+    public void testInfinity() {
+        // Yeah, I don't get it either.
+        assertEquals("", notation.format(BigDouble.POSITIVE_INFINITY));
+        assertEquals("", notation.format(BigDouble.NEGATIVE_INFINITY));
+    }
+
+    @Test
     public void testZeroConversion() {
         // Not sure why this is the case, but it is. I'll just roll with it...
         assertEquals("0", notation.format(BigDouble.ZERO, 0, 0));
